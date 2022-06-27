@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b015ef56-40ec-4a00-bc19-a48942a65d62": {
+      "ProjectGuid": "b015ef56-40ec-4a00-bc19-a48942a65d62",
+      "DisplayName": "EZ_Library",
+      "ColorIndex": 0
+    },
+    "8881a474-e208-4df7-bc1a-6b6c4b3659eb": {
+      "ProjectGuid": "8881a474-e208-4df7-bc1a-6b6c4b3659eb",
+      "DisplayName": "Services",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 2
+}

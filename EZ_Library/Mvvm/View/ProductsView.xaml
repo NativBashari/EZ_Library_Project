@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="EZ_Library.Mvvm.View.ProductsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EZ_Library.Mvvm.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             DataContext="{Binding Source={StaticResource Locator}, Path=Products}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <ListView Style="{StaticResource ModernListView}" Grid.Row="3" Margin="10,0,0,0" Grid.Column="1" Grid.RowSpan="5" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Category}" Width="55"></GridViewColumn>
+                    <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Title}" Width="55"></GridViewColumn>
+                    <GridViewColumn Header="Author" DisplayMemberBinding="{Binding Author}" Width="55"></GridViewColumn>
+                    <GridViewColumn Header="Genre" DisplayMemberBinding="{Binding Genre}"></GridViewColumn>
+                    <GridViewColumn Header="Rent Price" DisplayMemberBinding="{Binding RentPrice}"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView Style="{StaticResource ModernListView}" Grid.Row="3" Grid.RowSpan="5" ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomer}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="First name" DisplayMemberBinding="{Binding FirstName}"></GridViewColumn>
+                    <GridViewColumn Header="Last name" DisplayMemberBinding="{Binding LastName}"></GridViewColumn>
+                    <GridViewColumn Header="Phone number" DisplayMemberBinding="{Binding PhoneNumber}"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Style="{StaticResource ButtonsTheme}" Content="Open Rent" Grid.Row="2" Command="{Binding OpenRentCommand}"></Button>
+        <StackPanel Grid.Row="0" Grid.Column="2"  Grid.RowSpan="3">
+            <TextBlock Text="Filter By : " Foreground="AliceBlue" HorizontalAlignment="Center"></TextBlock>
+            <ComboBox x:Name="categoryCb" Style="{StaticResource ModernComboBox}"></ComboBox>
+            <ComboBox x:Name="genreCb" Style="{StaticResource ModernComboBox}"></ComboBox>
+            <ComboBox x:Name="topicCb" Style="{StaticResource ModernComboBox}"></ComboBox>
+            <ComboBox x:Name="availabilityCb" Style="{StaticResource ModernComboBox}"></ComboBox>
+            <Button Style="{StaticResource ButtonsTheme}" Content="Filter"></Button>
+
+        </StackPanel>
+
+
+
+    </Grid>
+</UserControl>

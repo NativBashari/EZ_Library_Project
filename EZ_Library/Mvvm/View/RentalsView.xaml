@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="EZ_Library.Mvvm.View.RentalsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EZ_Library.Mvvm.View"
+             mc:Ignorable="d" 
+              d:DesignHeight="450" d:DesignWidth="800"
+             DataContext="{Binding Source={StaticResource Locator}, Path=Rentals}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <ListView Grid.Row="1" Grid.Column="1" Grid.RowSpan="6" Style="{StaticResource ModernListView}" ItemsSource="{Binding Rentals}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Customer" DisplayMemberBinding="{Binding Customer.FirstName}"/>
+                    <GridViewColumn Header="Product" DisplayMemberBinding="{Binding Product.Title}"/>
+                    <GridViewColumn Header="Start Date" DisplayMemberBinding="{Binding StartDate}"/>
+                    <GridViewColumn Header="End Date" DisplayMemberBinding="{Binding EndDate}"/>
+                    <GridViewColumn Header="Return Date" DisplayMemberBinding="{Binding ReturnDate}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Style="{StaticResource ButtonsTheme}" Content="Close Rent" Grid.Row="1"></Button>
+        <Button Style="{StaticResource ButtonsTheme}" Content="Overdue" Grid.Row="2"></Button>
+        
+    </Grid>
+</UserControl>
