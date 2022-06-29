@@ -38,7 +38,7 @@ namespace EZ_Library.Mvvm.ViewModel
             }
         }
 
-        private void AddCustomer()
+        private async void AddCustomer()
         {
             dataService.AddCustomer(FirstName, LastName, PhoneNumber);
         }

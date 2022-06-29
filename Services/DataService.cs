@@ -10,7 +10,7 @@ namespace Services
 {
     public class DataService : IDataService
     {
-        private static SqlProviderServices instance;
+            private static SqlProviderServices instance;
         
         public DataService()
         {
@@ -52,12 +52,12 @@ namespace Services
             }
             return false;
         }
-        public void AddCustomer(string firstName, string lastName, string phoneNumber)
+        public async void AddCustomer(string firstName, string lastName, string phoneNumber)
         {
             using (var Context = new EZ_LibraryContext())
             {
                 Customer customer = new Customer { FirstName = firstName, LastName = lastName, PhoneNumber = phoneNumber, Rentals = new List<Rental>() };
-                Task.Run(() => Context.Customers.Add(customer));
+                await Task.Run(() => Context.Customers.Add(customer));
                 Context.SaveChanges(); 
             }
         }
@@ -77,7 +77,6 @@ namespace Services
                     {
                         Customer = customer,
                         Product = product,
-                        CustomerId = customer.Id,
                         EndDate = DateTime.Now.AddDays(7),
                         StartDate = DateTime.Now
                     });
