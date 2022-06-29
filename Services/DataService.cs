@@ -82,13 +82,15 @@ namespace Services
                         StartDate = DateTime.Now
                     });
                     Context.SaveChanges();
+                    return true;
                 }
             }
             catch(Exception ex)
             {
 
             }
-            return true;
+            return false;
+            
         }
 
         public bool RemoveFromStock()
