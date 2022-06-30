@@ -22,7 +22,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <ListView Grid.Row="1" Grid.Column="1" Grid.RowSpan="6" Style="{StaticResource ModernListView}" ItemsSource="{Binding Rentals}">
+        <ListView Grid.Row="1" Grid.Column="1" Grid.RowSpan="6" Style="{StaticResource ModernListView}" ItemsSource="{Binding Rentals}" SelectedItem="{Binding SelectedRental}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Customer" DisplayMemberBinding="{Binding Customer.FirstName}"/>
@@ -33,7 +33,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Style="{StaticResource ButtonsTheme}" Content="Close Rent" Grid.Row="1"></Button>
+        <Button Style="{StaticResource ButtonsTheme}" Content="Close Rent" Grid.Row="1" Command="{Binding CloseRentCommand}"></Button>
         <Button Style="{StaticResource ButtonsTheme}" Content="Overdue" Grid.Row="2"></Button>
         
     </Grid>

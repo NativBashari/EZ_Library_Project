@@ -10,7 +10,7 @@ namespace Services
 {
     public class DataService : IDataService
     {
-        private static SqlProviderServices instance;
+            private static SqlProviderServices instance;
         
         public DataService()
         {
@@ -52,32 +52,51 @@ namespace Services
             }
             return false;
         }
-        public void AddCustomer(string firstName, string lastName, string phoneNumber)
+        public async void AddCustomer(string firstName, string lastName, string phoneNumber)
         {
             using (var Context = new EZ_LibraryContext())
             {
                 Customer customer = new Customer { FirstName = firstName, LastName = lastName, PhoneNumber = phoneNumber, Rentals = new List<Rental>() };
-                Task.Run(() => Context.Customers.Add(customer));
+                await Task.Run(() => Context.Customers.Add(customer));
                 Context.SaveChanges(); 
             }
         }
 
-        public bool CloseRent()
+        public bool CloseRent(Rental rent)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var context = new EZ_LibraryContext())
+                {
+                    var rental = context.Rentals.Single(r => r.Id == rent.Id);
+                    if(rental != null)
+                    {
+                        rental.ReturnDate = DateTime.Now;
+                        context.SaveChanges();
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+            return false;
         }
 
-        public bool OpenRent(Customer customer, Product product)
+        public bool OpenRent(Customer cus, Product pro)
         {
             try
             {
                 using (var Context = new EZ_LibraryContext())
                 {
+                    var customer = Context.Customers.Single(c => c.Id == cus.Id);
+                    var product = Context.Products.Single(p => p.Id == pro.Id);
                     Context.Rentals.Add(new Rental
                     {
                         Customer = customer,
                         Product = product,
-                        CustomerId = customer.Id,
                         EndDate = DateTime.Now.AddDays(7),
                         StartDate = DateTime.Now
                     });

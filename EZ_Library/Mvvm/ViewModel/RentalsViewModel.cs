@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using Services;
 using Services.DataModels;
 using System;
@@ -14,12 +15,21 @@ namespace EZ_Library.Mvvm.ViewModel
     {
         IDataService dataService;
         public ObservableCollection<Rental> Rentals { get; set; }
+        public RelayCommand  CloseRentCommand { get; set; }
+        public Rental SelectedRental { get; set; }
         public RentalsViewModel(IDataService service)
         {
             dataService = service;
             Rentals = new ObservableCollection<Rental>();
             GetAllRentals();
+            CloseRentCommand = new RelayCommand(CloseRent);
         }
+
+        private void CloseRent()
+        {
+            dataService.CloseRent(SelectedRental);
+        }
+
         private async void GetAllRentals()
         {
             Rentals.Clear();
