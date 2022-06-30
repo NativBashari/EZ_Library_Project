@@ -11,10 +11,12 @@ namespace Services
     public class DataService : IDataService
     {
             private static SqlProviderServices instance;
+             private INotifier notifier;
         
-        public DataService()
+        public DataService(INotifier notif)
         {
             instance = SqlProviderServices.Instance;
+            notifier = notif;
         }
         public bool AddToStock(Enums.Category category, string title, string author, string publishing, double price, double rentPrice, Enums.Genre genre, Enums.Topic topic, DateTime printDate, DateTime publishDate )
         {
@@ -27,6 +29,7 @@ namespace Services
                         Book book = new Book { Category = category, Title = title, Author = author, Publishing = publishing, Price = price, RentPrice = rentPrice, Genre = genre, PublishDate = publishDate, Availability = Enums.Availability.Available };
                         Context.Products.Add(book);
                         Context.SaveChanges();
+                        notifier.OnSucces("Product added successfully");
                         return true;
                     }
                   
@@ -38,6 +41,7 @@ namespace Services
                         Journal journal = new Journal { Category = category, Author = author, Availability = Enums.Availability.Available, Price = price, PrintDate = printDate, Publishing = publishing, RentPrice = rentPrice, Title = title, Topic = topic };
                         Context.Products.Add(journal);
                         Context.SaveChanges();
+                        notifier.OnSucces("Product added successfully");
                         return true; 
                     }
                  }
@@ -54,12 +58,20 @@ namespace Services
         }
         public async void AddCustomer(string firstName, string lastName, string phoneNumber)
         {
-            using (var Context = new EZ_LibraryContext())
+            try
             {
-                Customer customer = new Customer { FirstName = firstName, LastName = lastName, PhoneNumber = phoneNumber, Rentals = new List<Rental>() };
-                await Task.Run(() => Context.Customers.Add(customer));
-                Context.SaveChanges(); 
+                using (var Context = new EZ_LibraryContext())
+                {
+                    Customer customer = new Customer { FirstName = firstName, LastName = lastName, PhoneNumber = phoneNumber, Rentals = new List<Rental>() };
+                    await Task.Run(() => Context.Customers.Add(customer));
+                    Context.SaveChanges();
+                }
             }
+            catch(Exception ex)
+            {
+                notifier.OnError(ex.Message);
+            }
+           
         }
 
         public bool CloseRent(Rental rent)
@@ -80,7 +92,7 @@ namespace Services
             }
             catch(Exception ex)
             {
-
+                notifier.OnError(ex.Message);
             }
             return false;
         }

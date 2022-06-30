@@ -64,6 +64,7 @@
     <Compile Include="DataService.cs" />
     <Compile Include="IDataService.cs" />
     <Compile Include="EZ_LibraryContext.cs" />
+    <Compile Include="INotifier.cs" />
     <Compile Include="Migrations\202206161051493_InitialModel.cs" />
     <Compile Include="Migrations\202206161051493_InitialModel.designer.cs">
       <DependentUpon>202206161051493_InitialModel.cs</DependentUpon>
