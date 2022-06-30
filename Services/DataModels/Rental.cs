@@ -16,7 +16,6 @@ namespace Services.DataModels
         public DateTime EndDate { get; set; }
         public DateTime? ReturnDate { get; set; }
         [Required]
-        public int CustomerId { get; set; }
         public  Customer Customer { get; set; }
         [Required]
         public virtual Product Product { get; set; }

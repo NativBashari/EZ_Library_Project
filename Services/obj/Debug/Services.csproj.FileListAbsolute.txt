@@ -18,3 +18,4 @@ C:\Users\nativ\Desktop\My Projects\EZ_Library\Services\obj\Debug\Services.Migrat
 C:\Users\nativ\Desktop\My Projects\EZ_Library\Services\obj\Debug\Services.Migrations.RenameCustomerInRenal.resources
 C:\Users\nativ\Desktop\My Projects\EZ_Library\Services\obj\Debug\Services.Migrations.SetRelationshipRentalsToCustomer.resources
 C:\Users\nativ\Desktop\My Projects\EZ_Library\Services\obj\Debug\Services.Migrations.FixDatabase.resources
+C:\Users\nativ\Desktop\My Projects\EZ_Library\Services\obj\Debug\Services.Migrations.RemoveIdFieldFromCustomer.resources

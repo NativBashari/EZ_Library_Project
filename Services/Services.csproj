@@ -92,6 +92,10 @@
     <Compile Include="Migrations\202206291932312_FixDatabase.designer.cs">
       <DependentUpon>202206291932312_FixDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206300711217_RemoveIdFieldFromCustomer.cs" />
+    <Compile Include="Migrations\202206300711217_RemoveIdFieldFromCustomer.designer.cs">
+      <DependentUpon>202206300711217_RemoveIdFieldFromCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -120,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206291932312_FixDatabase.resx">
       <DependentUpon>202206291932312_FixDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206300711217_RemoveIdFieldFromCustomer.resx">
+      <DependentUpon>202206300711217_RemoveIdFieldFromCustomer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
