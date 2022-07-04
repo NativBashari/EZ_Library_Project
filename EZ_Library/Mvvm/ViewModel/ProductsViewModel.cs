@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace EZ_Library.Mvvm.ViewModel
 {
@@ -33,6 +34,7 @@ namespace EZ_Library.Mvvm.ViewModel
         {
             if (SelectedCustomer != null && SelectedProduct != null)
                 dataService.OpenRent(SelectedCustomer, SelectedProduct);
+            else MessageBox.Show("Please select item and customer");
         }
 
         private async void GetAllCustomers()

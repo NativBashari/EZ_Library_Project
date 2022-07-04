@@ -12,9 +12,9 @@ namespace Services
         bool RemoveFromStock();
         bool CloseRent(Rental rental);
         bool OpenRent(Customer customer , Product product);
-        Task<IList<Product>> GetAllProducts();
-        Task<IList<Customer>> GetAllCustomers();
-        Task<IList<Rental>> GetAllRentals();
+        Task<IEnumerable<Product>> GetAllProducts();
+        Task<IEnumerable<Customer>> GetAllCustomers();
+        Task<IEnumerable<Rental>> GetAllRentals();
       
 
     }

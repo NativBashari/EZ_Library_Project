@@ -21,8 +21,8 @@ namespace EZ_Library.Mvvm.ViewModel
         {
             dataService = service;
             Rentals = new ObservableCollection<Rental>();
-            GetAllRentals();
             CloseRentCommand = new RelayCommand(CloseRent);
+            GetAllRentals();
         }
 
         private void CloseRent()
