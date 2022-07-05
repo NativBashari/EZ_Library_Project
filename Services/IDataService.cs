@@ -15,6 +15,7 @@ namespace Services
         Task<IEnumerable<Product>> GetAllProducts();
         Task<IEnumerable<Customer>> GetAllCustomers();
         Task<IEnumerable<Rental>> GetAllRentals();
+        Task<IEnumerable<Rental>> GetOverdueRentals();
       
 
     }

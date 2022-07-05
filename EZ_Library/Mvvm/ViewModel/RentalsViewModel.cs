@@ -16,15 +16,26 @@ namespace EZ_Library.Mvvm.ViewModel
         IDataService dataService;
         public ObservableCollection<Rental> Rentals { get; set; }
         public RelayCommand  CloseRentCommand { get; set; }
+        public RelayCommand GetOverdueRentalsCommand { get; set; }
         public Rental SelectedRental { get; set; }
         public RentalsViewModel(IDataService service)
         {
             dataService = service;
             Rentals = new ObservableCollection<Rental>();
             CloseRentCommand = new RelayCommand(CloseRent);
+            GetOverdueRentalsCommand = new RelayCommand(GetOverdueRentals);
             GetAllRentals();
         }
 
+        private async void GetOverdueRentals()
+        {
+            Rentals.Clear();
+            var overdue = await dataService.GetOverdueRentals();
+            foreach (var item in overdue)
+            {
+                Rentals.Add(item);
+            }
+        }
         private void CloseRent()
         {
             dataService.CloseRent(SelectedRental);

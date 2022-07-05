@@ -183,6 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Fonts\" />
+    <Folder Include="Mvvm\UserControls\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Books.png" />

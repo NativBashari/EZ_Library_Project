@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.SqlServer;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Services
@@ -11,7 +12,7 @@ namespace Services
     {
         private INotifier notifier;
         readonly Repository repository = new Repository();
-        void Stam() => _ = SqlProviderServices.Instance;
+        void Provider() => _ = SqlProviderServices.Instance;
 
 
         public DataService(INotifier notif)
@@ -20,18 +21,15 @@ namespace Services
         }
         public bool AddToStock(Enums.Category category, string title, string author, string publishing, double price, double rentPrice, Enums.Genre genre, Enums.Topic topic, DateTime printDate, DateTime publishDate)
         {
+            if (!ValidateProduct(title)) return false;
             try
             {
                 if (category.Equals(Enums.Category.Book))
                 {
-                    // using (var Context = new EZ_LibraryContext())
-                    {
-                        Book book = new Book { Category = category, Title = title, Author = author, Publishing = publishing, Price = price, RentPrice = rentPrice, Genre = genre, PublishDate = publishDate, Availability = Enums.Availability.Available };
-                        repository.AddProduct(book);
-                        notifier.OnSucces("Product added successfully");
-                        return true;
-                    }
-
+                    Book book = new Book { Category = category, Title = title, Author = author, Publishing = publishing, Price = price, RentPrice = rentPrice, Genre = genre, PublishDate = publishDate, Availability = Enums.Availability.Available };
+                    repository.AddProduct(book);
+                    notifier.OnSucces("Product added successfully");
+                    return true;
                 }
                 else if (category.Equals(Enums.Category.Journal))
                 {
@@ -50,6 +48,7 @@ namespace Services
         }
         public async void AddCustomer(string firstName, string lastName, string phoneNumber)
         {
+            if (!ValidateCustomer(firstName, lastName, phoneNumber)) return;         
             try
             {
                 Customer customer = new Customer { FirstName = firstName, LastName = lastName, PhoneNumber = phoneNumber, Rentals = new List<Rental>() };
@@ -107,8 +106,45 @@ namespace Services
         {
             throw new NotImplementedException();
         }
+        public Task<IEnumerable<Rental>> GetOverdueRentals() => Task.Run(() => repository.OverdueRentals);
         public Task<IEnumerable<Product>> GetAllProducts() => Task.Run(() => repository.Products);
         public Task<IEnumerable<Customer>> GetAllCustomers() => Task.Run(() => repository.Customers);
         public Task<IEnumerable<Rental>> GetAllRentals() => Task.Run(() => repository.Rentals);
+
+        private bool ValidateCustomer(string firstName, string lastName, string phoneNumber)
+        {
+            if (Regex.IsMatch(firstName, @"^\d+$") || Regex.IsMatch(lastName, @"^\d+$"))
+            {
+                notifier.OnError("The first and last name fields cannot contain numbers");
+                return false;
+            }
+            if (!Regex.IsMatch(phoneNumber, @"^[0-9]{10}$"))
+            {
+                notifier.OnError("The phone number is not valid");
+                return false;
+            }
+
+            foreach (var c in repository.Customers)
+            {
+                if (c.FirstName == firstName && c.LastName == lastName && c.PhoneNumber == phoneNumber)
+                {
+                    notifier.OnError("The customer is already in the database");
+                    return false;
+                }
+            }
+            return true;
+        }
+        private bool ValidateProduct(string title)
+        {
+            foreach (var p in repository.Products)
+            {
+                if (p.Title == title)
+                {
+                    if (!notifier.OnOption("There is a product in stock with the same title, would you like to add anyway?", "Product duplication")) return false;
+                }
+            }
+            return true;
+        }
     }
 }
+ 

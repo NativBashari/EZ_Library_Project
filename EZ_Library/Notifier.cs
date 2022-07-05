@@ -24,5 +24,11 @@ namespace EZ_Library
         {
             MessageBox.Show(warning);
         }
+        public bool OnOption(string option, string optionTitle)
+        {
+            if (MessageBox.Show(option, optionTitle, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                return true;
+            else return false;
+        }
     }
 }
