@@ -15,15 +15,37 @@ namespace EZ_Library.Mvvm.ViewModel
     {
         readonly IDataService dataService;
         public ObservableCollection<Customer> Customers { get; set; }
+        public ObservableCollection<Rental> Rentals { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
-        public Customer SelectedCustomer { get; set; }
         public RelayCommand AddCustomerCommand { get; set; }
+        private Customer selectedCustomer;  
+
+        public Customer SelectedCustomer
+        {
+            get { return selectedCustomer; }
+            set 
+            {
+                selectedCustomer = value;
+                GetCustomerRentalsHistory();
+            }
+        }
+
+        private void GetCustomerRentalsHistory()
+        {
+            Rentals.Clear();
+            foreach(var r in SelectedCustomer.Rentals)
+            {
+                Rentals.Add(r);
+            }
+        }
+
         public CustomersViewModel(IDataService service)
         {
             dataService = service;
             Customers = new ObservableCollection<Customer>();
+            Rentals = new ObservableCollection<Rental>();
             AddCustomerCommand = new RelayCommand(AddCustomer);
             GetAllCustomers();
         }
@@ -38,7 +60,7 @@ namespace EZ_Library.Mvvm.ViewModel
             }
         }
 
-        private async void AddCustomer()
+        private void AddCustomer()
         {
             dataService.AddCustomer(FirstName, LastName, PhoneNumber);
         }

@@ -162,6 +162,7 @@
     <Compile Include="Mvvm\View\RentalsView.xaml.cs">
       <DependentUpon>RentalsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Notifier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -190,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Fonts\" />
+    <Folder Include="Mvvm\UserControls\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Books.png" />

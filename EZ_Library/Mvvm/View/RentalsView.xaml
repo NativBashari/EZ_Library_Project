@@ -34,7 +34,7 @@
             </ListView.View>
         </ListView>
         <Button Style="{StaticResource ButtonsTheme}" Content="Close Rent" Grid.Row="1" Command="{Binding CloseRentCommand}"></Button>
-        <Button Style="{StaticResource ButtonsTheme}" Content="Overdue" Grid.Row="2"></Button>
+        <Button Style="{StaticResource ButtonsTheme}" Content="Overdue" Grid.Row="2" Command="{Binding GetOverdueRentalsCommand}"></Button>
         
     </Grid>
 </UserControl>

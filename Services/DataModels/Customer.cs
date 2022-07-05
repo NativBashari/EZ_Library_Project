@@ -23,6 +23,6 @@ namespace Services.DataModels
         [Required]
         [MaxLength(10)]
         public string PhoneNumber { get; set; }
-        public ICollection<Rental> Rentals { get; set; }
+        public virtual ICollection<Rental> Rentals { get; set; }
     }
 }

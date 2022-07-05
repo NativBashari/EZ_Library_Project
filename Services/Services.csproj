@@ -64,6 +64,7 @@
     <Compile Include="DataService.cs" />
     <Compile Include="IDataService.cs" />
     <Compile Include="EZ_LibraryContext.cs" />
+    <Compile Include="INotifier.cs" />
     <Compile Include="Migrations\202206161051493_InitialModel.cs" />
     <Compile Include="Migrations\202206161051493_InitialModel.designer.cs">
       <DependentUpon>202206161051493_InitialModel.cs</DependentUpon>
@@ -98,6 +99,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
