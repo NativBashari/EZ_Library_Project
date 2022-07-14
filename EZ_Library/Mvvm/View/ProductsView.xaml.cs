@@ -27,6 +27,7 @@ namespace EZ_Library.Mvvm.View
             categoryCb.ItemsSource = Enum.GetValues(typeof(Category));
             genreCb.ItemsSource= Enum.GetValues(typeof(Genre));
             topicCb.ItemsSource =Enum.GetValues(typeof(Topic));
+            availabilityCb.ItemsSource =Enum.GetValues(typeof(Availability));
         }
     }
 }

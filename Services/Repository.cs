@@ -1,6 +1,9 @@
 ﻿using Services.DataModels;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using static Services.DataModels.Enums;
 
 namespace Services
 {
@@ -12,6 +15,7 @@ namespace Services
         public IEnumerable<Product> Products => data.Products;
         public IEnumerable<Rental> Rentals => data.Rentals;
         public IEnumerable<Rental> OverdueRentals => GetOverdueRentals();
+       
 
         public void AddCustomer(Customer customer)
         {
@@ -46,6 +50,26 @@ namespace Services
         {
             data.Rentals.Add(rental);
             SaveChanges();
+        }
+        internal IEnumerable<Product> FilterProducts(Category category, Genre genre, Topic topic, Availability availability)
+        {
+           
+
+            //var p =  Products.Where(p1 => p1.Category == category);
+            //List<Product> products = new List<Product>();    
+            //foreach (var product in p)
+            //{
+            //    if (product.GetType()== typeof(Book))
+            //    {
+            //        var book = (Book)product;
+            //        if(book.Genre == genre) products.Add(book);
+            //    }
+            //    if (product.GetType() == typeof(Journal))
+            //    {
+            //        var journal = (Journal)product;
+            //        products.Add(journal);
+            //    }
+            //}
         }
 
     }

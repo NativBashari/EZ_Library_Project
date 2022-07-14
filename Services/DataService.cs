@@ -5,6 +5,7 @@ using System.Data.Entity.SqlServer;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using static Services.DataModels.Enums;
 
 namespace Services
 {
@@ -108,6 +109,7 @@ namespace Services
         }
         public Task<IEnumerable<Rental>> GetOverdueRentals() => Task.Run(() => repository.OverdueRentals);
         public Task<IEnumerable<Product>> GetAllProducts() => Task.Run(() => repository.Products);
+
         public Task<IEnumerable<Customer>> GetAllCustomers() => Task.Run(() => repository.Customers);
         public Task<IEnumerable<Rental>> GetAllRentals() => Task.Run(() => repository.Rentals);
 
@@ -145,6 +147,8 @@ namespace Services
             }
             return true;
         }
+        public Task<IEnumerable<Product>> FilterProducts(Category category, Genre genre, Topic topic, Availability availability) => Task.Run(() => repository.FilterProducts(category, genre, topic, availability));
+
     }
 }
  
