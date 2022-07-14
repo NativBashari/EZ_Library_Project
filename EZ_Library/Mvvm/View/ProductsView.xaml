@@ -45,11 +45,11 @@
         <Button Style="{StaticResource ButtonsTheme}" Content="Open Rent" Grid.Row="2" Command="{Binding OpenRentCommand}"></Button>
         <StackPanel Grid.Row="0" Grid.Column="2"  Grid.RowSpan="3">
             <TextBlock Text="Filter By : " Foreground="AliceBlue" HorizontalAlignment="Center"></TextBlock>
-            <ComboBox x:Name="categoryCb" Style="{StaticResource ModernComboBox}"></ComboBox>
-            <ComboBox x:Name="genreCb" Style="{StaticResource ModernComboBox}"></ComboBox>
-            <ComboBox x:Name="topicCb" Style="{StaticResource ModernComboBox}"></ComboBox>
-            <ComboBox x:Name="availabilityCb" Style="{StaticResource ModernComboBox}"></ComboBox>
-            <Button Style="{StaticResource ButtonsTheme}" Content="Filter"></Button>
+            <ComboBox x:Name="categoryCb" Style="{StaticResource ModernComboBox}" SelectedItem="{Binding SelectedCategory}"></ComboBox>
+            <ComboBox x:Name="genreCb" Style="{StaticResource ModernComboBox}" SelectedItem="{Binding SelectedGenre}"></ComboBox>
+            <ComboBox x:Name="topicCb" Style="{StaticResource ModernComboBox}" SelectedItem="{Binding SelectedTopic}"></ComboBox>
+            <ComboBox x:Name="availabilityCb" Style="{StaticResource ModernComboBox}" SelectedItem="{Binding SelectedAvailability}"></ComboBox>
+            <Button Style="{StaticResource ButtonsTheme}" Content="Filter" Command="{Binding FilterCommand}"></Button>
 
         </StackPanel>
 
