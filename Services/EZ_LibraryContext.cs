@@ -18,9 +18,9 @@ namespace Services
         }
 
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new NotImplementedException();            
-        }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    throw new NotImplementedException();            
+        //}
     }
 }

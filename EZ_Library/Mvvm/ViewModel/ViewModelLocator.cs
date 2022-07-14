@@ -9,7 +9,7 @@ using Services;
 namespace EZ_Library.ViewModel
 {
 
-    public class ViewModelLocator
+    public class ViewModelLocator 
     {
   
         public ViewModelLocator()

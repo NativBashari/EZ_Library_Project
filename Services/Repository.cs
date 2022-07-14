@@ -53,23 +53,11 @@ namespace Services
         }
         internal IEnumerable<Product> FilterProducts(Category category, Genre genre, Topic topic, Availability availability)
         {
-           
 
-            //var p =  Products.Where(p1 => p1.Category == category);
-            //List<Product> products = new List<Product>();    
-            //foreach (var product in p)
-            //{
-            //    if (product.GetType()== typeof(Book))
-            //    {
-            //        var book = (Book)product;
-            //        if(book.Genre == genre) products.Add(book);
-            //    }
-            //    if (product.GetType() == typeof(Journal))
-            //    {
-            //        var journal = (Journal)product;
-            //        products.Add(journal);
-            //    }
-            //}
+            //var books = Products.OfType<Book>();
+            //books.Where(b => b.Genre)
+            return null;
+
         }
 
     }

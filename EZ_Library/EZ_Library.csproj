@@ -87,8 +87,6 @@
     <Compile Include="Mvvm\ViewModel\ProductsViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\RentalsViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\ViewModelLocator.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
