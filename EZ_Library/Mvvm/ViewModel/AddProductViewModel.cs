@@ -2,10 +2,6 @@
 using GalaSoft.MvvmLight.Command;
 using Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static Services.DataModels.Enums;
 
 namespace EZ_Library.Mvvm.ViewModel

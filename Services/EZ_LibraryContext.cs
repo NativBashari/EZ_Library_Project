@@ -16,11 +16,14 @@ namespace Services
             : base("name=EZ_Library")
         {
         }
+<<<<<<< HEAD
 
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{
         //    throw new NotImplementedException();            
         //}
+=======
+>>>>>>> development
     }
 }

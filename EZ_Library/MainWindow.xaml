@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:EZ_Library"
         mc:Ignorable="d"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
-        Title="MainWindow" Height="760" Width="920"
+        Title="MainWindow" Height="700" Width="920"
         WindowStyle="None"
         ResizeMode="NoResize"
         Background="Transparent"

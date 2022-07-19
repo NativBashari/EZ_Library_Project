@@ -66,10 +66,11 @@ namespace Services
         {
             try
             {
-                var rental = repository.Rentals.Single(r => r.Id == rent.Id);
+                var rental = repository.Rentals.Single(r => r.Id == rent.Id);               
                 if (rental != null)
                 {
                     rental.ReturnDate = DateTime.Now;
+                    rental.Product.Availability = Availability.Available;
                     repository.SaveChanges();
                     return true;
                 }
@@ -88,6 +89,11 @@ namespace Services
             {
                 var customer = repository.Customers.Single(c => c.Id == cus.Id);
                 var product = repository.Products.Single(p => p.Id == pro.Id);
+                if (product.Availability == Availability.Rented)
+                {
+                    notifier.OnError("This product is unavailable");
+                    return false;
+                }
                 repository.AddRental(new Rental
                 {
                     Customer = customer,
@@ -95,6 +101,8 @@ namespace Services
                     EndDate = DateTime.Now.AddDays(7),
                     StartDate = DateTime.Now
                 });
+                product.Availability = Availability.Rented;
+                notifier.OnSucces("Rental opened succesfully");
             }
             catch (Exception ex)
             {
