@@ -10,7 +10,6 @@ namespace Services
     public class Repository
     {
         readonly EZ_LibraryContext data = new EZ_LibraryContext();
-
         public IEnumerable<Customer> Customers => data.Customers;
         public IEnumerable<Product> Products => data.Products;
         public IEnumerable<Rental> Rentals => data.Rentals;
@@ -65,6 +64,17 @@ namespace Services
             }
            
             return filtered;         
+        }
+
+        internal void UpdateCustomer(Customer customer)
+        {
+           var cus = Customers.Single(c => c.Id == customer.Id);
+            cus.FirstName = customer.FirstName;
+            cus.LastName = customer.LastName;
+            cus.PhoneNumber = customer.PhoneNumber;
+            cus.Image = customer.Image;
+            SaveChanges();
+
         }
 
     }

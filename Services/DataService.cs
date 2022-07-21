@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.SqlServer;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -47,12 +49,12 @@ namespace Services
 
             return false;
         }
-        public async void AddCustomer(string firstName, string lastName, string phoneNumber)
+        public async void AddCustomer(string firstName, string lastName, string phoneNumber, Image customerImage)
         {
             if (!ValidateCustomer(firstName, lastName, phoneNumber)) return;         
             try
             {
-                Customer customer = new Customer { FirstName = firstName, LastName = lastName, PhoneNumber = phoneNumber, Rentals = new List<Rental>() };
+                Customer customer = new Customer { FirstName = firstName, LastName = lastName, PhoneNumber = phoneNumber, Rentals = new List<Rental>(), Image = ImageToBytes(customerImage)};
                 await Task.Run(() => repository.AddCustomer(customer));
             }
             catch (Exception ex)
@@ -110,6 +112,7 @@ namespace Services
             }
             return true;
         }
+        
 
         public bool RemoveFromStock()
         {
@@ -157,6 +160,17 @@ namespace Services
         }
         public Task<IEnumerable<Product>> FilterProducts(Category category, Genre genre, Topic topic, Availability availability) => Task.Run(() => repository.FilterProducts(category, genre, topic, availability));
 
+        byte[] ImageToBytes(Image image)
+        {
+            ImageConverter imageConverter = new ImageConverter();
+            return (byte[])imageConverter.ConvertTo(image, typeof(byte[]));
+        }
+
+        public void UpdateCustomer(Customer customer)
+        {
+            Task.Run(() => repository.UpdateCustomer(customer));
+            notifier.OnSucces("Customer updated succesfully");
+        }
     }
 }
  
