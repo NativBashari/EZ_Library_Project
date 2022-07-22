@@ -12,8 +12,6 @@ namespace Services
         void OnWarning(string warning);
         void OnInfo(string info);
         void OnSucces(string succes);
-        bool OnOption(string option,string optionTitle);
-
-        
+        bool OnOption(string option,string optionTitle);       
     }
 }

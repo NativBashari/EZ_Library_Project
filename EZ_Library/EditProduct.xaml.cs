@@ -10,18 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static Services.DataModels.Enums;
 
-namespace EZ_Library.Mvvm.View
+namespace EZ_Library
 {
     /// <summary>
-    /// Interaction logic for AddProductView.xaml
+    /// Interaction logic for EditProduct.xaml
     /// </summary>
-    public partial class AddProductView : UserControl
+    public partial class EditProduct : Window
     {
-        public AddProductView()
+        public EditProduct()
         {
             InitializeComponent();
             categoryCb.ItemsSource = Enum.GetValues(typeof(Category));
@@ -31,7 +30,7 @@ namespace EZ_Library.Mvvm.View
 
         private void CategoryCb_DropDownClosed(object sender, EventArgs e)
         {
-            if(categoryCb.SelectedItem != null && categoryCb.SelectedItem.Equals(Category.Book))
+            if (categoryCb.SelectedItem != null && categoryCb.SelectedItem.Equals(Category.Book))
             {
                 topicgenretxt.Text = "Genre";
                 printpublishtxt.Text = "Publish-Date";
@@ -40,7 +39,7 @@ namespace EZ_Library.Mvvm.View
                 printDp.Visibility = Visibility.Hidden;
                 publishDp.Visibility = Visibility.Visible;
             }
-            if(categoryCb.SelectedItem != null && categoryCb.SelectedItem.Equals(Category.Journal))
+            if (categoryCb.SelectedItem != null && categoryCb.SelectedItem.Equals(Category.Journal))
             {
                 topicgenretxt.Text = "Topic";
                 printpublishtxt.Text = "Print-Date";

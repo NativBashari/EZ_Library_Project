@@ -13,11 +13,9 @@ namespace Services
 {
     public class DataService : IDataService
     {
-        private INotifier notifier;
+        private readonly INotifier notifier;
         readonly Repository repository = new Repository();
         void Provider() => _ = SqlProviderServices.Instance;
-
-
         public DataService(INotifier notif)
         {
             notifier = notif;
@@ -170,6 +168,11 @@ namespace Services
         {
             Task.Run(() => repository.UpdateCustomer(customer));
             notifier.OnSucces("Customer updated succesfully");
+        }
+
+        public void UpdateProduct(Product product)
+        {
+            throw new NotImplementedException();
         }
     }
 }

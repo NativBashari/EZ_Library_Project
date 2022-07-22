@@ -78,6 +78,9 @@
     <Compile Include="EditCustomer.xaml.cs">
       <DependentUpon>EditCustomer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditProduct.xaml.cs">
+      <DependentUpon>EditProduct.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Mvvm\ViewModel\AddProductViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\CustomersViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\HomeViewModel.cs" />
@@ -86,6 +89,10 @@
     <Compile Include="Mvvm\ViewModel\RentalsViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\ViewModelLocator.cs" />
     <Page Include="EditCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -191,7 +198,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Fonts\" />
-    <Folder Include="Mvvm\UserControls\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Books.png" />

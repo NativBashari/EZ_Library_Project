@@ -74,7 +74,36 @@ namespace Services
             cus.PhoneNumber = customer.PhoneNumber;
             cus.Image = customer.Image;
             SaveChanges();
-
+        }
+        internal void UpdateProduct(Product product)
+        {
+            if (product.Category == Category.Book)
+            {
+                var pro = Products.OfType<Book>().Single(b=> b.Id == product.Id);
+                var p = (Book)product;
+                pro.RentPrice = p.RentPrice;
+                pro.Price = p.Price;
+                pro.Category = p.Category;
+                pro.Author = p.Author;
+                pro.Publishing = p.Publishing;
+                pro.Title = p.Title;
+                pro.Genre = p.Genre;
+                pro.PublishDate = p.PublishDate;
+            }
+            else
+            {
+                var pro = Products.OfType<Journal>().Single(j => j.Id == product.Id);
+                var p = (Journal)product;
+                pro.RentPrice = p.RentPrice;
+                pro.Price = p.Price;
+                pro.Category = p.Category;
+                pro.Author = p.Author;
+                pro.Publishing = p.Publishing;
+                pro.Title = p.Title;
+                pro.Topic = p.Topic;
+                pro.PrintDate = p.PrintDate;
+            }              
+            SaveChanges();
         }
 
     }

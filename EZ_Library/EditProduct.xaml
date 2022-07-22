@@ -1,0 +1,46 @@
+﻿<Window x:Class="EZ_Library.EditProduct"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EZ_Library"
+        mc:Ignorable="d"
+        Title="EditProduct" Height="450" Width="500"
+        DataContext="{Binding Source={StaticResource Locator}, Path=Products}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock  Text="Category:"  HorizontalAlignment="Right"></TextBlock>
+        <TextBlock Text="Title:" HorizontalAlignment="Right" Grid.Row="1"></TextBlock>
+        <TextBlock Text="Author:"  HorizontalAlignment="Right" Grid.Row="2"></TextBlock>
+        <TextBlock Text="Publishing:"  HorizontalAlignment="Right" Grid.Row="3"></TextBlock>
+        <TextBlock Text="RentPrice:"  HorizontalAlignment="Right" Grid.Row="4"></TextBlock>
+        <TextBlock x:Name="topicgenretxt" HorizontalAlignment="Right" Grid.Row="5"></TextBlock>
+        <TextBlock x:Name="printpublishtxt" HorizontalAlignment="Right" Grid.Row="6"></TextBlock>
+        <ComboBox x:Name="categoryCb" Style="{StaticResource ModernComboBox}" Grid.Column="1" DropDownClosed="CategoryCb_DropDownClosed" SelectedItem="{Binding SelectedProduct.Category}"></ComboBox>
+        <TextBox Style="{StaticResource ModernTextBox}" Grid.Row="1" VerticalAlignment= "top" Grid.Column="1" Text="{Binding SelectedProduct.Title}"></TextBox>
+        <TextBox Style="{StaticResource ModernTextBox}" Grid.Row="2" VerticalAlignment= "top" Grid.Column="1" Text="{Binding SelectedProduct.Author}"></TextBox>
+        <TextBox Style="{StaticResource ModernTextBox}" Grid.Row="3" VerticalAlignment= "top" Grid.Column="1" Text="{Binding SelectedProduct.Publishing}"></TextBox>
+        <TextBox Style="{StaticResource ModernTextBox}" Grid.Row="4" VerticalAlignment= "top" Grid.Column="1" Text="{Binding SelectedProduct.RentPrice}" ></TextBox>
+        <ComboBox x:Name="genreCb" Style="{StaticResource ModernComboBox}" Grid.Column="1" VerticalAlignment="Top" Grid.Row="5" Visibility="Hidden" SelectedItem="{Binding SelectedProduct.Genre}"></ComboBox>
+        <ComboBox x:Name="topicCb" Style="{StaticResource ModernComboBox}" Grid.Column="1" Grid.Row="5" VerticalAlignment="Top" Visibility="Hidden" SelectedItem="{Binding SelectedProduct.Topic}"></ComboBox>
+        <DatePicker x:Name="publishDp" Grid.Column="1" Grid.Row="6" Width="200" VerticalAlignment="Top" Visibility="Hidden" SelectedDate="{Binding SelectedProduct.PublishDate}"></DatePicker>
+        <DatePicker x:Name="printDp" Grid.Column="1" Grid.Row="6" Width="200" VerticalAlignment="top" Visibility="Hidden" SelectedDate="{Binding SelectedProduct.PrintDate}"></DatePicker>
+        <Button Style="{StaticResource ButtonsTheme}" Grid.Row="8" Grid.ColumnSpan="3" Content="Update Product"></Button>
+    </Grid>
+</Window>

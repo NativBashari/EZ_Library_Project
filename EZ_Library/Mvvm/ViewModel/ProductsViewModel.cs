@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using Services;
 using Services.DataModels;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using static Services.DataModels.Enums;
@@ -16,6 +17,7 @@ namespace EZ_Library.Mvvm.ViewModel
         public Product SelectedProduct { get; set; }
         public Customer SelectedCustomer { get; set; }
         public RelayCommand OpenRentCommand { get; set; }
+        public RelayCommand UpdateProductCommand { get; set; }
         public Category SelectedCategory { get; set; }
         public Genre SelectedGenre { get; set; }
         public Topic SelectedTopic { get; set; }
@@ -30,6 +32,12 @@ namespace EZ_Library.Mvvm.ViewModel
             GetAllCustomers();
             OpenRentCommand = new RelayCommand(OpenRent);
             FilterCommand = new RelayCommand(FilterProducts);
+            UpdateProductCommand = new RelayCommand(UpdateProduct);
+        }
+
+        private void UpdateProduct()
+        {
+            throw new NotImplementedException();
         }
 
         private async void FilterProducts()

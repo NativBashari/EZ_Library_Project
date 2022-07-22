@@ -15,6 +15,7 @@ namespace Services
         bool CloseRent(Rental rental);
         bool OpenRent(Customer customer , Product product);
         void UpdateCustomer(Customer customer);
+        void UpdateProduct(Product product);
         Task<IEnumerable<Product>> FilterProducts(Category category, Genre genre, Topic topic, Availability availability);
         Task<IEnumerable<Product>> GetAllProducts();
         Task<IEnumerable<Customer>> GetAllCustomers();

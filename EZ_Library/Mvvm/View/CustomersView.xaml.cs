@@ -27,7 +27,7 @@ namespace EZ_Library.Mvvm.View
            notifier = new Notifier();
         }
 
-        private void editCustomer_btn_Click(object sender, RoutedEventArgs e)
+        private void EditCustomer_btn_Click(object sender, RoutedEventArgs e)
         {
             if(lvCustomers.SelectedItem != null)
             {

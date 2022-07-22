@@ -47,6 +47,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="editCustomer_btn" Style="{StaticResource ButtonsTheme}" Click="editCustomer_btn_Click" Content="Edit Customer"></Button>
+        <Button x:Name="editCustomer_btn" Style="{StaticResource ButtonsTheme}" Click="EditCustomer_btn_Click" Content="Edit Customer"></Button>
     </Grid>
 </UserControl>

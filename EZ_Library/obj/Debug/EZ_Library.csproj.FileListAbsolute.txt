@@ -53,3 +53,5 @@ C:\Users\nativ\Desktop\My Projects\EZ_Library\EZ_Library\obj\Debug\EZ_Library.ex
 C:\Users\nativ\Desktop\My Projects\EZ_Library\EZ_Library\obj\Debug\EZ_Library.pdb
 C:\Users\nativ\Desktop\My Projects\EZ_Library\EZ_Library\obj\Debug\EditCustomer.g.cs
 C:\Users\nativ\Desktop\My Projects\EZ_Library\EZ_Library\obj\Debug\EditCustomer.baml
+C:\Users\nativ\Desktop\My Projects\EZ_Library\EZ_Library\obj\Debug\EditProduct.g.cs
+C:\Users\nativ\Desktop\My Projects\EZ_Library\EZ_Library\obj\Debug\EditProduct.baml
