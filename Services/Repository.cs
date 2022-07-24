@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading.Tasks;
 using static Services.DataModels.Enums;
 
 namespace Services
@@ -14,7 +15,7 @@ namespace Services
         public IEnumerable<Product> Products => data.Products;
         public IEnumerable<Rental> Rentals => data.Rentals;
         public IEnumerable<Rental> OverdueRentals => GetOverdueRentals();
-       
+
 
         public void AddCustomer(Customer customer)
         {
@@ -27,7 +28,7 @@ namespace Services
             data.Products.Add(product);
             SaveChanges();
         }
-        public IEnumerable<Rental> GetOverdueRentals()
+        public  IEnumerable<Rental> GetOverdueRentals()
         {
             var overdue = new List<Rental>();
             foreach (var rental in Rentals)
@@ -40,17 +41,17 @@ namespace Services
             return overdue;
         }
 
-        internal void SaveChanges()
+        public void SaveChanges()
         {
             data.SaveChanges();
         }
 
-        internal void AddRental(Rental rental)
+        public void AddRental(Rental rental)
         {
             data.Rentals.Add(rental);
             SaveChanges();
         }
-        internal IEnumerable<Product> FilterProducts(Category category, Genre genre, Topic topic, Availability availability)
+        public IEnumerable<Product> FilterProducts(Category category, Genre genre, Topic topic, Availability availability)
         {
             IEnumerable<Product> filtered = new List<Product>();
             
@@ -66,7 +67,7 @@ namespace Services
             return filtered;         
         }
 
-        internal void UpdateCustomer(Customer customer)
+        public void UpdateCustomer(Customer customer)
         {
            var cus = Customers.Single(c => c.Id == customer.Id);
             cus.FirstName = customer.FirstName;
@@ -75,7 +76,7 @@ namespace Services
             cus.Image = customer.Image;
             SaveChanges();
         }
-        internal void UpdateProduct(Product product)
+        public void UpdateProduct(Product product)
         {
             if (product.Category == Category.Book)
             {

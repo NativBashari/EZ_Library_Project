@@ -203,6 +203,10 @@
     <Resource Include="Images\Books.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ProjectUnitTest\ProjectUnitTest.csproj">
+      <Project>{FF73FD70-2ACD-4739-AD44-639E3FBE8352}</Project>
+      <Name>ProjectUnitTest</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Services\Services.csproj">
       <Project>{8881a474-e208-4df7-bc1a-6b6c4b3659eb}</Project>
       <Name>Services</Name>
