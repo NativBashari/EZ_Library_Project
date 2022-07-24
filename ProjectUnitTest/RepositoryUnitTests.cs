@@ -22,6 +22,7 @@ namespace ProjectUnitTest
             var pro = repository.Products.Single(p => p.Id == book.Id);
             Assert.IsTrue(pro != null);
             Assert.AreEqual(book.Id, pro.Id);
+            repository.RemoveProduct(book);
         }
         [TestMethod]
         public void AddCustomerTest()
@@ -30,6 +31,7 @@ namespace ProjectUnitTest
             var cus = repository.Customers.Single(c => c.Id == customer.Id);
             Assert.IsNotNull(cus);
             Assert.AreEqual(cus.Id, customer.Id);
+            repository.RemoveCustomer(customer);
         }
         [TestMethod]
         public void AddRentalTest()
@@ -40,6 +42,9 @@ namespace ProjectUnitTest
             var ren = repository.Rentals.Single(r => r.Id == rental.Id);
             Assert.IsNotNull(ren);
             Assert.AreEqual(rental.Id, ren.Id);
+            repository.RemoveRental(rental);
+            repository.RemoveProduct(book);
+            repository.RemoveCustomer(customer);
         }
         [TestMethod]
         public void UpdateProductTest()
@@ -50,6 +55,7 @@ namespace ProjectUnitTest
             var pro = repository.Products.Single(p => p.Id == book.Id);
             Assert.IsNotNull(pro);
             Assert.AreEqual(book.Author, pro.Author);
+            repository.RemoveProduct(book);
            
         }
         [TestMethod]
@@ -61,6 +67,7 @@ namespace ProjectUnitTest
             var cus = repository.Customers.Single(c => c.Id == customer.Id);
             Assert.IsNotNull(cus);
             Assert.AreEqual(cus.FirstName, cus.FirstName);
+            repository.RemoveCustomer(customer);
         }
         [TestMethod]
         public void InitializedDbSets()

@@ -40,7 +40,21 @@ namespace Services
             }
             return overdue;
         }
-
+        public void RemoveProduct(Product product)
+        {
+            data.Products.Remove(product);
+            SaveChanges();
+        }
+        public void RemoveCustomer(Customer customer)
+        {
+            data.Customers.Remove(customer);
+            SaveChanges();
+        }
+        public void RemoveRental(Rental rental)
+        {
+            data.Rentals.Remove(rental);
+            SaveChanges();
+        }
         public void SaveChanges()
         {
             data.SaveChanges();
