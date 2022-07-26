@@ -12,7 +12,7 @@ namespace ProjectUnitTest
     {
         private readonly Repository repository = new Repository();
         Book book = new Book() { Category = Category.Book, Genre = Genre.Children, Author = "Author", Title = "Title", Price = 0, RentPrice = 0, PublishDate = DateTime.Now, Publishing = "Publishing", Availability = Availability.Available };
-        public Customer customer = new Customer() { FirstName = "FirstName", LastName = "LastName", PhoneNumber = "0566123526", Image = new byte[150] };
+        Customer customer = new Customer() { FirstName = "FirstName", LastName = "LastName", PhoneNumber = "0566123526", Image = new byte[150] };
 
 
         [TestMethod]
@@ -76,10 +76,5 @@ namespace ProjectUnitTest
             Assert.IsNotNull(repository.Products);
             Assert.IsNotNull(repository.Customers);
         }
-           
-
-
-        
-    
     }
 }

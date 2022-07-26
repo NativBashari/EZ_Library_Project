@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.SqlServer;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -15,14 +16,22 @@ namespace Services
     {
         private readonly INotifier notifier;
         readonly Repository repository = new Repository();
+        private readonly ValidationService validation;
         void Provider() => _ = SqlProviderServices.Instance;
         public DataService(INotifier notif)
         {
             notifier = notif;
+            validation = new ValidationService(notifier,repository);
         }
+        public async Task<IEnumerable<Rental>> GetOverdueRentals() => await Task.Run(() => repository.OverdueRentals);
+        public async Task<IEnumerable<Product>> GetAllProducts() => await Task.Run(() => repository.Products);
+        public async Task<IEnumerable<Customer>> GetAllCustomers() => await Task.Run(() => repository.Customers);
+        public async Task<IEnumerable<Rental>> GetAllRentals() => await Task.Run(() => repository.Rentals);
+        public async Task<IEnumerable<Product>> FilterProducts(Category category, Genre genre, Topic topic, Availability availability) => await Task.Run(() => repository.FilterProducts(category, genre, topic, availability));
+
         public bool AddToStock(Enums.Category category, string title, string author, string publishing, double price, double rentPrice, Enums.Genre genre, Enums.Topic topic, DateTime printDate, DateTime publishDate)
         {
-            if (!ValidateProduct(title)) return false;
+            if (!validation.ValidateProduct(title)) return false;
             try
             {
                 if (category.Equals(Enums.Category.Book))
@@ -47,31 +56,27 @@ namespace Services
 
             return false;
         }
-        public async void AddCustomer(string firstName, string lastName, string phoneNumber, Image customerImage)
+        public  void AddCustomer(string firstName, string lastName, string phoneNumber, Image customerImage)
         {
-            if (!ValidateCustomer(firstName, lastName, phoneNumber)) return;         
+            if (!validation.ValidateCustomer(firstName, lastName, phoneNumber)) return;         
             try
             {
                 Customer customer = new Customer { FirstName = firstName, LastName = lastName, PhoneNumber = phoneNumber, Rentals = new List<Rental>(), Image = ImageToBytes(customerImage)};
-                await Task.Run(() => repository.AddCustomer(customer));
+                Task.Run(() =>  repository.AddCustomer(customer));
             }
             catch (Exception ex)
             {
                 notifier.OnError(ex.Message);
             }
-
         }
 
         public bool CloseRent(Rental rent)
         {
             try
-            {
-                var rental = repository.Rentals.Single(r => r.Id == rent.Id);               
-                if (rental != null)
+            {               
+                if (rent != null)
                 {
-                    rental.ReturnDate = DateTime.Now;
-                    rental.Product.Availability = Availability.Available;
-                    repository.SaveChanges();
+                    repository.ClostRent(rent);
                     return true;
                 }
                 return false;
@@ -79,6 +84,7 @@ namespace Services
             catch (Exception ex)
             {
                 notifier.OnError(ex.Message);
+                Debug.WriteLine("Catch Exception");
             }
             return false;
         }
@@ -109,56 +115,13 @@ namespace Services
                 notifier.OnError(ex.Message);
             }
             return true;
-        }
-        
-
-        public bool RemoveFromStock()
+        }        
+        public void RemoveFromStock(Product product)
         {
-            throw new NotImplementedException();
+            repository.RemoveProduct(product);
         }
-        public async Task<IEnumerable<Rental>> GetOverdueRentals() => await Task.Run(() => repository.OverdueRentals);
-        public async Task<IEnumerable<Product>> GetAllProducts() => await Task.Run(() => repository.Products);
 
-        public async Task<IEnumerable<Customer>> GetAllCustomers() => await Task.Run(() => repository.Customers);
-        public async Task<IEnumerable<Rental>> GetAllRentals() => await Task.Run(() => repository.Rentals);
-
-        private bool ValidateCustomer(string firstName, string lastName, string phoneNumber)
-        {
-            if (Regex.IsMatch(firstName, @"^\d+$") || Regex.IsMatch(lastName, @"^\d+$"))
-            {
-                notifier.OnError("The first and last name fields cannot contain numbers");
-                return false;
-            }
-            if (!Regex.IsMatch(phoneNumber, @"^[0-9]{10}$"))
-            {
-                notifier.OnError("The phone number is not valid");
-                return false;
-            }
-
-            foreach (var c in repository.Customers)
-            {
-                if (c.FirstName == firstName && c.LastName == lastName && c.PhoneNumber == phoneNumber)
-                {
-                    notifier.OnError("The customer is already in the database");
-                    return false;
-                }
-            }
-            return true;
-        }
-        private bool ValidateProduct(string title)
-        {
-            foreach (var p in repository.Products)
-            {
-                if (p.Title == title)
-                {
-                    if (!notifier.OnOption("There is a product in stock with the same title, would you like to add anyway?", "Product duplication")) return false;
-                }
-            }
-            return true;
-        }
-        public async Task<IEnumerable<Product>> FilterProducts(Category category, Genre genre, Topic topic, Availability availability) => await Task.Run(() => repository.FilterProducts(category, genre, topic, availability));
-
-        byte[] ImageToBytes(Image image)
+        public byte[] ImageToBytes(Image image)
         {
             ImageConverter imageConverter = new ImageConverter();
             return (byte[])imageConverter.ConvertTo(image, typeof(byte[]));
@@ -172,7 +135,8 @@ namespace Services
 
         public void UpdateProduct(Product product)
         {
-            throw new NotImplementedException();
+            Task.Run(() => repository.UpdateProduct(product));
+            notifier.OnSucces("Product updated succesfully");
         }
     }
 }

@@ -1,9 +1,7 @@
 ﻿using Services.DataModels;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Threading.Tasks;
 using static Services.DataModels.Enums;
 
 namespace Services
@@ -54,6 +52,14 @@ namespace Services
         {
             data.Rentals.Remove(rental);
             SaveChanges();
+        }
+        public void ClostRent(Rental rental)
+        {
+            var rent = Rentals.Single(r => r.Id == rental.Id);
+            rent.ReturnDate = DateTime.Now;
+            rent.Product.Availability = Availability.Available;
+            SaveChanges();
+
         }
         public void SaveChanges()
         {
