@@ -20,7 +20,7 @@ namespace Services
         void Provider() => _ = SqlProviderServices.Instance;
         public DataService(INotifier notif)
         {
-            notifier = notif;
+            notifier = notif; 
             validation = new ValidationService(notifier,repository);
         }
         public async Task<IEnumerable<Rental>> GetOverdueRentals() => await Task.Run(() => repository.OverdueRentals);

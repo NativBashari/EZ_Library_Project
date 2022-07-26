@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ValidationService.cs" />
     <Compile Include="DataModels\Book.cs" />
     <Compile Include="DataModels\Customer.cs" />
     <Compile Include="DataModels\Enums.cs" />
