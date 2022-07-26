@@ -22,7 +22,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <ListView Style="{StaticResource ModernListView}" Grid.Row="3" Margin="10,0,0,0" Grid.Column="1" Grid.RowSpan="5" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}">
+        <ListView x:Name="lvProducts" Style="{StaticResource ModernListView}" Grid.Row="3" Margin="10,0,0,0" Grid.Column="1" Grid.RowSpan="5" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Category}" Width="55"></GridViewColumn>
@@ -43,17 +43,15 @@
             </ListView.View>
         </ListView>
         <Button Style="{StaticResource ButtonsTheme}" Content="Open Rent" Grid.Row="2" Command="{Binding OpenRentCommand}"></Button>
+        <Button x:Name="editProduct_btn" Style="{StaticResource ButtonsTheme}" Grid.Row="1" Content="Edit Product" Click="EditProduct_btn_Click"></Button>
+
         <StackPanel Grid.Row="0" Grid.Column="2"  Grid.RowSpan="3">
             <TextBlock Text="Filter By : " Foreground="AliceBlue" HorizontalAlignment="Center"></TextBlock>
-            <ComboBox x:Name="categoryCb" Style="{StaticResource ModernComboBox}" SelectedItem="{Binding SelectedCategory}"></ComboBox>
-            <ComboBox x:Name="genreCb" Style="{StaticResource ModernComboBox}" SelectedItem="{Binding SelectedGenre}"></ComboBox>
-            <ComboBox x:Name="topicCb" Style="{StaticResource ModernComboBox}" SelectedItem="{Binding SelectedTopic}"></ComboBox>
-            <ComboBox x:Name="availabilityCb" Style="{StaticResource ModernComboBox}" SelectedItem="{Binding SelectedAvailability}"></ComboBox>
+            <ComboBox x:Name="categoryCb" Text="Category" IsReadOnly="True" IsEditable="True" Style="{StaticResource ModernComboBox}" SelectedItem="{Binding SelectedCategory}"></ComboBox>
+            <ComboBox x:Name="genreCb" Text="Genre" IsReadOnly="True" IsEditable="True" Style="{StaticResource ModernComboBox}" SelectedItem="{Binding SelectedGenre}"></ComboBox>
+            <ComboBox x:Name="topicCb" Text="Topic" IsReadOnly="True" IsEditable="True" Style="{StaticResource ModernComboBox}" SelectedItem="{Binding SelectedTopic}"></ComboBox>
+            <ComboBox x:Name="availabilityCb" Text="Availability" IsReadOnly="True" IsEditable="True" Style="{StaticResource ModernComboBox}" SelectedItem="{Binding SelectedAvailability}"></ComboBox>
             <Button Style="{StaticResource ButtonsTheme}" Content="Filter" Command="{Binding FilterCommand}"></Button>
-
         </StackPanel>
-
-
-
     </Grid>
 </UserControl>

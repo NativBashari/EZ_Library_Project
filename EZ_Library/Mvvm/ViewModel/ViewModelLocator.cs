@@ -4,6 +4,7 @@ using CommonServiceLocator;
 using EZ_Library.Mvvm.ViewModel;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
+using ProjectUnitTest;
 using Services;
 
 namespace EZ_Library.ViewModel

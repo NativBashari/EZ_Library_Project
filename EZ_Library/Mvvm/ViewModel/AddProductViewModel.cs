@@ -18,7 +18,6 @@ namespace EZ_Library.Mvvm.ViewModel
             get { return _title; }
             set { Set(ref _title, value); }
         }
-
         public string Author { get; set; }
         public string Publishing { get; set; }
         public double Price { get; set; }
@@ -33,7 +32,6 @@ namespace EZ_Library.Mvvm.ViewModel
             dataService = data;
             AddProductCommand = new RelayCommand(AddProduct);
         }
-
         private void AddProduct()
         {
             dataService.AddToStock(Category , Title , Author, Publishing, Price, RentPrice, Genre, Topic, PrintDate, PublishDate);

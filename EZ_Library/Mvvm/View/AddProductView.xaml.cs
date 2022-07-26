@@ -29,7 +29,7 @@ namespace EZ_Library.Mvvm.View
             topicCb.ItemsSource = Enum.GetValues(typeof(Topic));
         }
 
-        private void categoryCb_DropDownClosed(object sender, EventArgs e)
+        private void CategoryCb_DropDownClosed(object sender, EventArgs e)
         {
             if(categoryCb.SelectedItem != null && categoryCb.SelectedItem.Equals(Category.Book))
             {

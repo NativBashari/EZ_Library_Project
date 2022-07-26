@@ -21,6 +21,7 @@ namespace EZ_Library.Mvvm.View
     /// </summary>
     public partial class ProductsView : UserControl
     {
+        readonly Notifier notifier;
         public ProductsView()
         {
             InitializeComponent();
@@ -28,6 +29,17 @@ namespace EZ_Library.Mvvm.View
             genreCb.ItemsSource= Enum.GetValues(typeof(Genre));
             topicCb.ItemsSource =Enum.GetValues(typeof(Topic));
             availabilityCb.ItemsSource =Enum.GetValues(typeof(Availability));
+            notifier = new Notifier();
+        }
+
+        private void EditProduct_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (lvProducts.SelectedItem != null)
+            {
+                EditProduct editProduct = new EditProduct();
+                editProduct.Show();
+            }
+            else notifier.OnError("Please select product from the list.");
         }
     }
 }

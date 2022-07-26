@@ -45,6 +45,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -55,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ValidationService.cs" />
     <Compile Include="DataModels\Book.cs" />
     <Compile Include="DataModels\Customer.cs" />
     <Compile Include="DataModels\Enums.cs" />
@@ -97,6 +99,10 @@
     <Compile Include="Migrations\202206300711217_RemoveIdFieldFromCustomer.designer.cs">
       <DependentUpon>202206300711217_RemoveIdFieldFromCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207191502521_AddedImageToCustomer.cs" />
+    <Compile Include="Migrations\202207191502521_AddedImageToCustomer.designer.cs">
+      <DependentUpon>202207191502521_AddedImageToCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
@@ -129,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206300711217_RemoveIdFieldFromCustomer.resx">
       <DependentUpon>202206300711217_RemoveIdFieldFromCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207191502521_AddedImageToCustomer.resx">
+      <DependentUpon>202207191502521_AddedImageToCustomer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

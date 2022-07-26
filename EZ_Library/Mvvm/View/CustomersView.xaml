@@ -18,7 +18,7 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <ListView Style="{StaticResource ModernListView}" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomer}" Margin="10">
+        <ListView x:Name="lvCustomers" Style="{StaticResource ModernListView}" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomer}" Margin="10">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}"/>
@@ -27,14 +27,16 @@
                 </GridView>
             </ListView.View>
         </ListView>
-            <TextBlock Text="Add Customer:" Foreground="AliceBlue" FontSize="25" HorizontalAlignment="Center" FontWeight="DemiBold" Grid.Row="1" Grid.Column="2"/>
-            <TextBlock Text="First-Name:" Foreground="AliceBlue" FontSize="18" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center"/>
-            <TextBlock Text="Last-Name:" Foreground="AliceBlue" FontSize="18" Grid.Row="1" Grid.Column="2" VerticalAlignment="Bottom" Margin="0,0,0,30"/>
-            <TextBlock Text="Phone:" Foreground="AliceBlue" FontSize="18" Grid.Row="1" Grid.Column="2" VerticalAlignment="Bottom"/>
-        <TextBox Style="{StaticResource ModernTextBox}" Grid.Row="1" Grid.Column="2" Margin="50,0,0,0" Text="{Binding FirstName}"></TextBox>
-        <TextBox Style="{StaticResource ModernTextBox}" Grid.Row="1" Grid.Column="2" Margin="50,63,0,0" Text="{Binding LastName}"></TextBox>
-        <TextBox Style="{StaticResource ModernTextBox}" Grid.Row="1" Grid.Column="2" Margin="50,0,0,0" VerticalAlignment="Bottom" Text="{Binding PhoneNumber}"></TextBox>
-        <Button Style="{StaticResource ButtonsTheme}" Content="Add Customer" Grid.Row="2" Grid.Column="2" Margin="0,0,0,50" Command="{Binding AddCustomerCommand}"></Button>
+            <TextBlock Text="Add Customer:" Foreground="AliceBlue" FontSize="25" HorizontalAlignment="Center" FontWeight="DemiBold" Grid.Row="0" Grid.Column="2"/>
+            <TextBlock Text="First-Name:" Foreground="AliceBlue" FontSize="16" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center"/>
+            <TextBlock Text="Last-Name:" Foreground="AliceBlue" FontSize="16" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Margin="0,50,0,0"/>
+        <TextBlock Text="Phone:" Foreground="AliceBlue" FontSize="16" Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Margin="0,0,0,5"/>
+        <TextBox Style="{StaticResource ModernTextBox}" Grid.Row="0" Grid.Column="2" Text="{Binding LastName}"></TextBox>
+        <TextBox Style="{StaticResource ModernTextBox}" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Margin="0,60,0,0" Text="{Binding FirstName}"></TextBox>
+        <TextBox Style="{StaticResource ModernTextBox}" Grid.Row="0" Grid.Column="2"  VerticalAlignment="Bottom" Text="{Binding PhoneNumber}"></TextBox>
+        <Button Style="{StaticResource ButtonsTheme}" Content="Add Customer" Grid.Row="2" Grid.Column="2"  Command="{Binding AddCustomerCommand}" VerticalAlignment="Bottom"></Button>
+        <Button Style="{StaticResource ButtonsTheme}" Content="Upload Image" Grid.Row="2" Grid.Column="2" Command="{Binding UploadImageCommand}"></Button>
+        <Image Grid.Row="1" Grid.Column="2" Source="{Binding CustomerImageToShow.Source}" Margin="0,20,0,0" ></Image>
         <ListView Style="{StaticResource ModernListView}" Grid.Row="1" Grid.RowSpan="2" Margin="10" ItemsSource="{Binding Rentals}">
             <ListView.View>
                 <GridView>
@@ -44,7 +46,7 @@
                     <GridViewColumn Header="Return date" DisplayMemberBinding="{Binding ReturnDate}"/>
                 </GridView>
             </ListView.View>
-            
         </ListView>
+        <Button x:Name="editCustomer_btn" Style="{StaticResource ButtonsTheme}" Click="EditCustomer_btn_Click" Content="Edit Customer"></Button>
     </Grid>
 </UserControl>

@@ -20,9 +20,22 @@ namespace EZ_Library.Mvvm.View
     /// </summary>
     public partial class CustomersView : UserControl
     {
+        Notifier notifier;
         public CustomersView()
         {
             InitializeComponent();
+           notifier = new Notifier();
+        }
+
+        private void EditCustomer_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if(lvCustomers.SelectedItem != null)
+            {
+                EditCustomer editCustomer = new EditCustomer();
+                editCustomer.Show();
+                
+            }
+            else notifier.OnError("Please select a customer from the list.");
         }
     }
 }

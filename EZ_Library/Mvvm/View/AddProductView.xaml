@@ -32,15 +32,15 @@
         <TextBlock Style="{StaticResource ModernTextBlock}" Text="RentPrice:"  HorizontalAlignment="Right" Grid.Row="4"></TextBlock>
         <TextBlock x:Name="topicgenretxt" Style="{StaticResource ModernTextBlock}"  HorizontalAlignment="Right" Grid.Row="5"></TextBlock>
         <TextBlock x:Name="printpublishtxt" Style="{StaticResource ModernTextBlock}" HorizontalAlignment="Right" Grid.Row="6"></TextBlock>
-        <ComboBox x:Name="categoryCb" Style="{StaticResource ModernComboBox}" Grid.Column="1" DropDownClosed="categoryCb_DropDownClosed" SelectedItem="{Binding Category}"></ComboBox>
-        <TextBox Style="{StaticResource ModernTextBox}" Grid.Row="1" Grid.Column="1" Text="{Binding Title}"></TextBox>
-        <TextBox Style="{StaticResource ModernTextBox}" Grid.Row="2" Grid.Column="1" Text="{Binding Author, Mode=OneWayToSource}"></TextBox>
-        <TextBox Style="{StaticResource ModernTextBox}" Grid.Row="3" Grid.Column="1" Text="{Binding Publishing}"></TextBox>
-        <TextBox Style="{StaticResource ModernTextBox}" Grid.Row="4" Grid.Column="1" Text="{Binding RentPrice}" ></TextBox>
-        <ComboBox x:Name="genreCb" Style="{StaticResource ModernComboBox}" Grid.Column="1" Grid.Row="5" Visibility="Hidden" SelectedItem="{Binding Genre}"></ComboBox>
-        <ComboBox x:Name="topicCb" Style="{StaticResource ModernComboBox}" Grid.Column="1" Grid.Row="5" Visibility="Hidden" SelectedItem="{Binding Topic}"></ComboBox>
-        <DatePicker x:Name="publishDp" Grid.Column="1" Grid.Row="6" Width="200" VerticalAlignment="Center" Visibility="Hidden" SelectedDate="{Binding PublishDate}"></DatePicker>
-        <DatePicker x:Name="printDp" Grid.Column="1" Grid.Row="6" Width="200" VerticalAlignment="Center" Visibility="Hidden" SelectedDate="{Binding PrintDate}"></DatePicker>
+        <ComboBox x:Name="categoryCb" Style="{StaticResource ModernComboBox}" Grid.Column="1" VerticalAlignment="top" DropDownClosed="CategoryCb_DropDownClosed" SelectedItem="{Binding Category}"></ComboBox>
+        <TextBox Style="{StaticResource ModernTextBox}" VerticalAlignment="top" Grid.Row="1" Grid.Column="1" Text="{Binding Title}"></TextBox>
+        <TextBox Style="{StaticResource ModernTextBox}" VerticalAlignment="top" Grid.Row="2" Grid.Column="1" Text="{Binding Author, Mode=OneWayToSource}"></TextBox>
+        <TextBox Style="{StaticResource ModernTextBox}" VerticalAlignment="top"  Grid.Row="3" Grid.Column="1" Text="{Binding Publishing}"></TextBox>
+        <TextBox Style="{StaticResource ModernTextBox}" VerticalAlignment="top" Grid.Row="4" Grid.Column="1" Text="{Binding RentPrice}" ></TextBox>
+        <ComboBox x:Name="genreCb" Style="{StaticResource ModernComboBox}" Grid.Column="1" VerticalAlignment="top" Grid.Row="5" Visibility="Hidden" SelectedItem="{Binding Genre}"></ComboBox>
+        <ComboBox x:Name="topicCb" Style="{StaticResource ModernComboBox}" Grid.Column="1" VerticalAlignment="top" Grid.Row="5" Visibility="Hidden" SelectedItem="{Binding Topic}"></ComboBox>
+        <DatePicker x:Name="publishDp" Grid.Column="1" Grid.Row="6" Width="200" VerticalAlignment="Top" Visibility="Hidden" SelectedDate="{Binding PublishDate}"></DatePicker>
+        <DatePicker x:Name="printDp" Grid.Column="1" Grid.Row="6" Width="200" VerticalAlignment="Top" Visibility="Hidden" SelectedDate="{Binding PrintDate}"></DatePicker>
         <Button Style="{StaticResource ButtonsTheme}" Grid.Row="8" Grid.Column="1" Content="Add Product" Command="{Binding AddProductCommand}"></Button>
     </Grid>
 </UserControl>

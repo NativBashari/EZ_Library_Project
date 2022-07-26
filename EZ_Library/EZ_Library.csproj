@@ -59,6 +59,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -80,6 +81,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="EditCustomer.xaml.cs">
+      <DependentUpon>EditCustomer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditProduct.xaml.cs">
+      <DependentUpon>EditProduct.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Mvvm\ViewModel\AddProductViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\CustomersViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\HomeViewModel.cs" />
@@ -87,6 +94,14 @@
     <Compile Include="Mvvm\ViewModel\ProductsViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\RentalsViewModel.cs" />
     <Compile Include="Mvvm\ViewModel\ViewModelLocator.cs" />
+    <Page Include="EditCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -189,12 +204,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Fonts\" />
-    <Folder Include="Mvvm\UserControls\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Books.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ProjectUnitTest\ProjectUnitTest.csproj">
+      <Project>{FF73FD70-2ACD-4739-AD44-639E3FBE8352}</Project>
+      <Name>ProjectUnitTest</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Services\Services.csproj">
       <Project>{8881a474-e208-4df7-bc1a-6b6c4b3659eb}</Project>
       <Name>Services</Name>

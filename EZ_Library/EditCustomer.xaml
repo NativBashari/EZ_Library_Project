@@ -1,0 +1,34 @@
+﻿<Window x:Class="EZ_Library.EditCustomer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EZ_Library"
+        mc:Ignorable="d"
+        Title="EditCustomer" Height="350" Width="400"
+        DataContext="{Binding Source={StaticResource Locator}, Path=Customers}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="First name:" FontSize="18" VerticalAlignment="Top"></TextBlock>
+        <TextBlock Text="Last name:" FontSize="18" Grid.Row="1" VerticalAlignment="Top"></TextBlock>
+        <TextBlock Text="Phone:" FontSize="18"  Grid.Row="2" VerticalAlignment="Top"></TextBlock>
+        <TextBlock Text="Image:" FontSize="18"  Grid.Row="3" VerticalAlignment="Top"></TextBlock>
+        <TextBox Style="{StaticResource ModernTextBox}" Grid.Column="1" Text="{Binding SelectedCustomer.FirstName}" VerticalAlignment="Top"></TextBox>
+        <TextBox Style="{StaticResource ModernTextBox}" Grid.Column="1" Grid.Row="1" Text="{Binding SelectedCustomer.LastName}" VerticalAlignment="Top"></TextBox>
+        <TextBox Style="{StaticResource ModernTextBox}" Grid.Column="1" Grid.Row="2" Text="{Binding SelectedCustomer.PhoneNumber}" VerticalAlignment="Top"></TextBox>
+        <Button Style="{StaticResource ButtonsTheme}"  Content="Browse" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Top"></Button>
+        <Button Grid.Row="3" Grid.ColumnSpan="2" Style="{StaticResource ButtonsTheme}" VerticalAlignment="Bottom" Content="Update" Command="{Binding UpdateCustomerDetailsCommand}"></Button>        
+        
+    </Grid>
+</Window>
