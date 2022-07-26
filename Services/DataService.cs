@@ -23,11 +23,11 @@ namespace Services
             notifier = notif; 
             validation = new ValidationService(notifier,repository);
         }
-        public async Task<IEnumerable<Rental>> GetOverdueRentals() => await Task.Run(() => repository.OverdueRentals);
-        public async Task<IEnumerable<Product>> GetAllProducts() => await Task.Run(() => repository.Products);
-        public async Task<IEnumerable<Customer>> GetAllCustomers() => await Task.Run(() => repository.Customers);
-        public async Task<IEnumerable<Rental>> GetAllRentals() => await Task.Run(() => repository.Rentals);
-        public async Task<IEnumerable<Product>> FilterProducts(Category category, Genre genre, Topic topic, Availability availability) => await Task.Run(() => repository.FilterProducts(category, genre, topic, availability));
+        public Task<IEnumerable<Rental>> GetOverdueRentals() =>  Task.Run(() => repository.OverdueRentals);
+        public  Task<IEnumerable<Product>> GetAllProducts() => Task.Run(() => repository.Products);
+        public Task<IEnumerable<Customer>> GetAllCustomers() => Task.Run(() => repository.Customers);
+        public Task<IEnumerable<Rental>> GetAllRentals() =>  Task.Run(() => repository.Rentals);
+        public Task<IEnumerable<Product>> FilterProducts(Category category, Genre genre, Topic topic, Availability availability) => Task.Run(() => repository.FilterProducts(category, genre, topic, availability));
 
         public bool AddToStock(Enums.Category category, string title, string author, string publishing, double price, double rentPrice, Enums.Genre genre, Enums.Topic topic, DateTime printDate, DateTime publishDate)
         {
